@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BAKERY MANAGEMENT SYSTEM</title>
+</head>
+
+<body>
+  <form>
+    <h1>BAKERY MANAGEMENT SYSTEM</h1>
+    <div class="wrapper">
+      <div class="container">
+        <header>
+          <h2>Bakery Management System</h2>
+        </header>
+        <input id="customer" type="text" placeholder="Customer" required>
+        <input id="items" type="text" placeholder="Items" required>
+        <input id="Total" type="number" placeholder="Total" required>
+        <button id="showDetails">Add Order</button>
+      </div>
+      <div id="details-box">
+        <!-- Order details will be displayed here -->
+      </div>
+    </div>
+  </form>
+  <script>
+  
+  
+  const currentDateTime = new Date();
+
+    // Format the date
+    const formattedDate = currentDateTime.toLocaleDateString('en-US');
+
+    // Format the time
+    const hours = currentDateTime.getHours();
+    const minutes = currentDateTime.getMinutes();
+    const seconds = currentDateTime.getSeconds();
+    const formattedTime = hours + ':' + minutes + ':' + seconds;
+    const customer = document.getElementById("customer");
+    const items = document.getElementById("items");
+    const total = document.getElementById("Total");
+    const detailsData = document.getElementById("details-box");
+    const showDetails = document.getElementById("showDetails");
+
+
+    function add(e) {
+      e.preventDefault();
+      const newData = document.createElement('p');
+      newData.textContent = "Customer Name: " + customer.value + ", Items: " + items.value + ", Total: " + total.value + ", Date : " + formattedDate ;
+      detailsData.appendChild(newData);
+    }
+
+
+    showDetails.addEventListener("click", add);
+  </script>
+</body>
+</html>
